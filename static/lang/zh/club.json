@@ -1,0 +1,1360 @@
+{
+    "info": {
+        "avatar": "images/user.png",
+        "title": "哈尔滨市篮球俱乐部管理系统",
+        "signout": "退出登录",
+        "info": "用户信息",
+        "icon": ["fa fa-ellipsis-v", "fa fa-sign-out", "fa fa-soccer-ball-o"]
+    },
+    "skin": {
+        "--main-bg": "#f0f2f5",
+        "--tabs-header": "#fff",
+        "--menu-bg-1": "#396b9d",
+        "--menu-bg-2": "#4891d0",
+        "--menu-text-color": "#b8daf4",
+        "--menu-active-text-color": "#fff",
+        "--login-1": "#9fb8ad",
+        "--login-2": "#1fc8db",
+        "--login-3": "#2cb5e8"
+    },
+    "extends": [{
+            "type": "single",
+            "title": "接口文档",
+            "uri": "/club/static/apiface.html#/inner",
+            "icon": "fa fa-code",
+            "groupName": "code"
+        },
+        {
+            "type": "single",
+            "title": "数据库",
+            "uri": "/club/druid/sql.html",
+            "icon": "fa fa-database",
+            "groupName": "database"
+        }
+    ],
+    "hidden": [{
+        "title": "订单详情",
+        "uri": "detail",
+        "fouces": true,
+        "icon": "fa fa-newspaper-o"
+    }, {
+        "title": "订单",
+        "uri": "order",
+        "fouces": true,
+        "icon": "fa fa-id-card-o"
+    }, {
+        "title": "个人中心",
+        "uri": "user",
+        "icon": "fa fa-user"
+    }],
+    "menus": [{
+            "type": "single",
+            "title": "公告管理",
+            "uri": "notice",
+            "icon": "fa fa-pencil-square-o",
+            "groupName": "notice"
+        },
+        {
+            "type": "single",
+            "title": "留言板管理",
+            "uri": "discuss",
+            "icon": "fa fa-send",
+            "groupName": "discuss"
+        }, {
+            "type": "single",
+            "title": "用户管理",
+            "uri": "users",
+            "icon": "fa fa-users",
+            "groupName": "users"
+        },
+        {
+            "type": "single",
+            "title": "场地管理",
+            "uri": "court",
+            "icon": "fa fa-map-marker",
+            "groupName": "court"
+        },
+        {
+            "type": "single",
+            "title": "器材管理",
+            "uri": "appa",
+            "icon": "fa fa-life-bouy",
+            "groupName": "appa"
+        },
+        {
+            "type": "single",
+            "title": "订单管理",
+            "uri": "orders",
+            "icon": "fa fa-line-chart",
+            "groupName": "orders"
+        },
+        {
+            "type": "single",
+            "title": "历史订单",
+            "uri": "orderhis",
+            "icon": "fa fa-bar-chart-o",
+            "groupName": "orderhis"
+        },
+        {
+            "type": "single",
+            "title": "登录日志",
+            "uri": "loginlog",
+            "icon": "fa fa-key",
+            "groupName": "loginlog"
+        }
+    ],
+    "common": {
+        "valid": "校验订单中...",
+        "import": "导入数据",
+        "export": "导出数据",
+        "delete": "删除数据",
+        "remove": "删除",
+        "add": "新增",
+        "edit": "编辑",
+        "deleteTitle": "是否删除所选中对象",
+        "deleteWarning": "请勾选未被引用的删除对象",
+        "unsubscribe": ["取消预定", "是否取消预定"],
+        "leave": ["离开页面", "是否不保存数据的情况下离开页面"],
+        "placeholder": "请输入关键词",
+        "opt": "操作",
+        "cancle": "取消",
+        "submit": "保存",
+        "ok": "确定",
+        "selectTable": {
+            "emptyText": "暂无数据",
+            "emptySelect": "--请选择--"
+        },
+        "selectRoles": {
+            "multiple": false,
+            "id": "account",
+            "text": "account",
+            "name": "userName",
+            "clearable": true,
+            "popoverWidth": 600,
+            "selection": {
+                "showSelection": false
+            },
+            "pagination": {
+                "autoRoll": false,
+                "showPagination": true,
+                "showMore": false,
+                "autoRollSelect": false
+            },
+            "columns": [{
+                    "label": "电话号码",
+                    "prop": "account",
+                    "minWidth": 150
+                },
+                {
+                    "label": "客户名称",
+                    "prop": "userName",
+                    "minWidth": 150
+                }, {
+                    "label": "用户类型",
+                    "prop": "leveles",
+                    "width": 70
+                },
+                {
+                    "label": "邮箱",
+                    "prop": "email",
+                    "minWidth": 150
+                }
+            ]
+        },
+        "datagrid": {
+            "allSelect": "全选",
+            "item": "项",
+            "selected": "已选择",
+            "loading": "正在为您加载数据...",
+            "loaded": "已为您加载全部数据",
+            "pageLoad": "分页加载",
+            "rollLoad": "滚动加载",
+            "sumText": "列合计",
+            "emptyText": "暂无数据"
+        },
+        "detail": [{
+                "icon": "el-icon-postcard",
+                "start": true,
+                "label": "订单号",
+                "prop": "uuid"
+            },
+            {
+                "icon": "el-icon-alarm-clock",
+                "start": true,
+                "label": "使用时长",
+                "prop": "hours"
+            },
+            {
+                "icon": "el-icon-tickets",
+                "start": true,
+                "label": "交易金额",
+                "prop": "price"
+            },
+            {
+                "icon": "el-icon-user",
+                "start": true,
+                "label": "使用者",
+                "prop": "useInfo"
+            },
+            {
+                "icon": "el-icon-mobile-phone",
+                "start": true,
+                "label": "联系方式",
+                "prop": "contact"
+            },
+            {
+                "icon": "el-icon-location-outline",
+                "start": true,
+                "label": "场所",
+                "prop": "positon"
+            },
+            {
+                "icon": "el-icon-user",
+                "start": true,
+                "label": "创建者",
+                "prop": "updateUserName"
+            },
+
+            {
+                "icon": "el-icon-pie-chart",
+                "start": false,
+                "label": "交易结果",
+                "prop": "result",
+                "value": ["成功", "失败"]
+            },
+            {
+                "icon": "el-icon-tickets",
+                "start": false,
+                "label": "备注",
+                "prop": "descripter"
+            },
+
+            {
+                "icon": "el-icon-date",
+                "start": true,
+                "label": "创建时间",
+                "prop": "updateTime"
+            },
+            {
+                "icon": "el-icon-date",
+                "start": true,
+                "labels": ["开始时间", "预约时间"],
+                "prop": "startTime"
+            },
+            {
+                "icon": "el-icon-date",
+                "start": false,
+                "label": "结束时间",
+                "prop": "finishTime"
+            },
+            {
+                "icon": "el-icon-basketball",
+                "start": true,
+                "arr": true,
+                "label": "器材",
+                "prop": "positons"
+            }
+        ]
+    },
+    "dialog": {
+        "back": {
+            "info": {
+                "title": "账单结算",
+                "submit": "结算",
+                "descripter": ["备注", "请输入备注", "返还成功"]
+            },
+            "formRules": {
+                "descripter": [{
+                    "min": 1,
+                    "max": 300,
+                    "message": "长度为 10 到 300 个字符",
+                    "trigger": "blur"
+                }]
+            }
+        },
+        "user": {
+            "info": {
+                "add": "新增用户",
+                "edit": "编辑用户",
+                "exsist": "账号已存在",
+                "account": ["电话号码", "请输入电话号码"],
+                "userName": ["名称", "请输入用户名"],
+                "email": ["邮箱", "请输入用户邮箱"],
+                "error": "邮箱格式不正确！",
+                "gender": {
+                    "label": "性别",
+                    "items": ["保密", "男", "女", "其他"]
+                },
+                "leveles": {
+                    "label": "类型",
+                    "items": [{
+                        "k": 1,
+                        "v": "普通"
+                    }, {
+                        "k": 2,
+                        "v": "VIP"
+                    }, {
+                        "k": 3,
+                        "v": "管理员"
+                    }]
+                }
+            },
+            "formRules": {
+                "account": [{
+                    "required": true,
+                    "message": "请输入联系电话",
+                    "trigger": "blur"
+                }],
+                "userName": [{
+                        "required": true,
+                        "message": "请输入用户名",
+                        "trigger": "blur"
+                    },
+                    {
+                        "min": 1,
+                        "max": 30,
+                        "message": "长度为 1 到 30 个字符",
+                        "trigger": "blur"
+                    }
+                ],
+                "email": [{
+                    "type": "email",
+                    "message": "请输入正确的邮箱地址",
+                    "trigger": "blur,change"
+                }]
+            }
+        },
+        "notice": {
+            "info": {
+                "add": "新增公告",
+                "edit": "编辑公告",
+                "mode": ["状态", "草稿", "发布"],
+                "descripter": ["公告内容", "请输入公告内容"]
+            },
+            "formRules": {
+                "descripter": [{
+                        "required": true,
+                        "message": "请输入公告内容",
+                        "trigger": "blur"
+                    },
+                    {
+                        "min": 10,
+                        "max": 300,
+                        "message": "长度为 10 到 300 个字符",
+                        "trigger": "blur"
+                    }
+                ]
+            }
+
+        },
+        "imp": {
+            "next": "下一步",
+            "finish": "完成",
+            "prefix": "上一步",
+            "notfile": "请上传正确的excel文件",
+            "success": "上传成功！",
+            "fail": "上传失败！",
+            "required": "请选择需要导入的信息！",
+            "beford": "请先上传文件！",
+            "put": "导入成功！",
+            "error": ["导入数据失败! [原因为:", "]"],
+            "titles": ["选择文件", "数据预览", "导入数据"],
+            "upload": {
+                "selectFile": "选择文件",
+                "tips": [
+                    "不能存在合并的单元格",
+                    "仅仅支持二维数据上传",
+                    "支持100MB以内的文件",
+                    "支持数据5000条以内的批量上传",
+                    "更多导入说明和示例，请查看帮助文档"
+                ]
+            },
+            "template": "导入模板下载",
+            "selectTips": "选择需要导入的信息",
+            "importTips": ["正在导入数据", "导入数据成功", "导入数据失败"]
+        },
+        "content": {
+            "info": {
+                "add": "新增",
+                "edit": "编辑",
+                "type": ["器材", "场所"],
+                "exsist": ["器材已存在", "场所已存在"],
+                "price": ["费用", "请输入费用(单位:元/小时)"],
+                "descripter": ["备注", "请输入备注"],
+                "code": [
+                    ["器材编码", "请输入器材编码"],
+                    ["场所编码", "请输入场所编码"]
+                ],
+                "positon": [
+                    ["名称", "请输入器材名称"],
+                    ["地点", "请输入场所位置"]
+                ]
+            },
+            "formRules": {
+                "code": [{
+                    "required": true,
+                    "message": "请输入编号",
+                    "trigger": "blur"
+                }],
+                "positon": [{
+                        "required": true,
+                        "message": "请输入内容",
+                        "trigger": "blur"
+                    },
+                    {
+                        "min": 1,
+                        "max": 60,
+                        "message": "长度为 1 到 30 个字符",
+                        "trigger": "blur"
+                    }
+                ],
+                "descripter": [{
+                    "min": 1,
+                    "max": 60,
+                    "message": "长度为 1 到 30 个字符",
+                    "trigger": "blur"
+                }],
+                "price": [{
+                    "required": true,
+                    "message": "请输入价格",
+                    "trigger": "blur"
+                }]
+            }
+        }
+    },
+    "version": {
+        "info": "应用信息",
+        "tips": [
+            "只能修改中文 : lang/zh/club.json 修改您的内容",
+            "只能修改icon : lang/zh/club.json 修改您的内容",
+            "修改菜单extends : lang/zh/club.json 修改您的内容",
+            "修改菜单menus : lang/zh/club.json 修改您的内容",
+            "修改菜单hidden : lang/zh/club.json 修改您的内容",
+            "自定义输入 : lang/zh/club.json 修改您的内容"
+        ],
+        "feel": "欢迎点评留言",
+        "submit": "立即评论",
+        "name": "昵称",
+        "suggest": "建议",
+        "namep": "使用匿名-请输入",
+        "suggestp": "请输入您的评论意见或留言",
+        "score": "评分",
+        "error": "评论或留言出错",
+        "formFules": {
+            "descripter": [{
+                    "required": true,
+                    "message": "请填写评论、建议、留言",
+                    "trigger": "blur"
+                },
+                {
+                    "min": 15,
+                    "max": 300,
+                    "message": "请填写 15 到 300 个字符",
+                    "trigger": "blur"
+                }
+            ]
+        },
+        "demos": [
+            "images/demo/e1.jpg",
+            "images/demo/e2.jpg",
+            "images/demo/z1.jpg",
+            "images/demo/z2.jpg",
+            "images/demo/z4.jpg",
+            "images/demo/z5.jpg",
+            "images/demo/z6.jpg",
+            "images/demo/z7.jpg",
+            "images/demo/u1.jpg",
+            "images/demo/u2.jpg",
+            "images/demo/u3.jpg"
+        ]
+    },
+    "user": {
+        "info": {
+            "page": ["用户页面", "返回"],
+            "base": [{
+                    "icon": "el-icon-mobile-phone",
+                    "prop": "account"
+                },
+                {
+                    "icon": "el-icon-message",
+                    "prop": "email"
+                }, {
+                    "icon": "el-icon-info",
+                    "prop": "descripter"
+                }
+            ],
+            "unsubscribe": "取消预约",
+            "submit": ["保存", "保存密码"],
+            "descripter": ["个人说明", "请输入个性签名"],
+            "old": ["原密码", "请输入原密码"],
+            "passwd": ["新密码", "请输入新密码"],
+            "comfirm": ["确认密码", "请输入确认密码"],
+            "days": "天",
+            "date": "el-icon-date",
+            "avatar": "点击更换头像",
+            "log": ["  : :  在线", "  : :  自动退出", "  : :  手动退出", "最近登录"],
+            "empty": ["无预约", "无订单", "无历史订单"],
+            "tabs": [{
+                "icon": "el-icon-collection",
+                "title": "基本资料"
+            }, {
+                "icon": "el-icon-key",
+                "title": "密码"
+            }, {
+                "icon": "el-icon-alarm-clock",
+                "title": "我的预约"
+            }, {
+                "icon": "el-icon-medal-1",
+                "title": "我的租用"
+            }, {
+                "icon": "el-icon-medal",
+                "title": "租用历史"
+            }],
+            "tip": ["修改成功", "修改失败:", "上传图片只能是 JPG/png/gif/svg 格式!", "上传图片大小不能超过 2MB!", "两次输入密码不一致!", "邮箱格式不正确！", "成功取消预约"]
+        },
+        "formRules": [{
+                "account": [{
+                    "required": true,
+                    "message": "缺失账号",
+                    "trigger": "blur"
+                }],
+                "userName": [{
+                        "required": true,
+                        "message": "请输入内容",
+                        "trigger": "blur"
+                    },
+                    {
+                        "min": 1,
+                        "max": 30,
+                        "message": "长度为 1 到 30 个字符",
+                        "trigger": "blur"
+                    }
+                ],
+                "email": [{
+                        "required": true,
+                        "message": "请输入用户邮箱",
+                        "trigger": "blur"
+                    },
+                    {
+                        "type": "email",
+                        "message": "请输入正确的邮箱地址",
+                        "trigger": "blur,change"
+                    }
+                ]
+            },
+            {
+                "old": [{
+                    "required": true,
+                    "message": "请输入原密码",
+                    "trigger": "blur"
+                }],
+                "passwd": [{
+                        "required": true,
+                        "message": "请输入新密码",
+                        "trigger": "blur"
+                    },
+                    {
+                        "min": 8,
+                        "max": 20,
+                        "message": "长度为  8 到 20 个字符",
+                        "trigger": "blur"
+                    }
+                ],
+                "comfirm": [{
+                        "required": true,
+                        "message": "请输入确认密码",
+                        "trigger": "blur"
+                    },
+                    {
+                        "min": 8,
+                        "max": 20,
+                        "message": "长度为  8 到 20 个字符",
+                        "trigger": "blur"
+                    }
+                ]
+            }
+        ]
+    },
+    "login": {
+        "title": "欢迎登录",
+        "subtitle": "Welcome",
+        "placeholder": {
+            "account": "请输入账号/邮箱/电话",
+            "password": "请输入密码",
+            "vacode": "请输入验证码"
+        },
+        "form": {
+            "account": "账   号",
+            "password": "密   码",
+            "vacode": "验证码",
+            "radio": {
+                "normal": "普通用户",
+                "vip": "VIP用户",
+                "admin": "管理员"
+            },
+            "btn": "登 录"
+        },
+        "loginFormRules": {
+            "account": [{
+                    "required": true,
+                    "message": "请输入账号",
+                    "trigger": "blur"
+                },
+                {
+                    "min": 1,
+                    "max": 30,
+                    "message": "长度为 1 到 30 个字符",
+                    "trigger": "blur"
+                }
+            ],
+            "password": [{
+                    "required": true,
+                    "message": "请输入密码",
+                    "trigger": "blur"
+                },
+                {
+                    "min": 1,
+                    "max": 30,
+                    "message": "长度为 1 到 30 个字符",
+                    "trigger": "blur"
+                }
+            ],
+            "vacode": [{
+                "required": true,
+                "message": "请输入验证码",
+                "trigger": "blur"
+            }]
+        }
+    },
+    "users": {
+        "info": {
+            "avatar": "头像",
+            "add": "新增",
+            "edit": "编辑",
+            "delete": "删除",
+            "init": "重置密码",
+            "initTitle": "是否重置所选中对象",
+            "initWarning": "请勾选重置对象",
+            "success": "重置密码成功",
+            "enum": [
+                ["访客", "普通用户", "VIP用户", "管理员"],
+                ["保密", "男", "女", "第三"]
+            ]
+        },
+        "datagrid": {
+            "selection": {
+                "showSelection": true
+            },
+            "pagination": {
+                "showPagination": true,
+                "showMore": true
+            },
+            "columns": [{
+                    "label": "账号",
+                    "prop": "account",
+                    "minWidth": 150
+                },
+                {
+                    "label": "名称",
+                    "prop": "userName",
+                    "minWidth": 150
+                },
+                {
+                    "label": "邮箱",
+                    "prop": "email",
+                    "minWidth": 200
+                },
+                {
+                    "label": "用户类型",
+                    "prop": "leveles",
+                    "width": 70
+                },
+                {
+                    "label": "性别",
+                    "prop": "gender",
+                    "width": 120
+                },
+                {
+                    "label": "创建时间",
+                    "prop": "createTime",
+                    "width": 160
+                }
+            ]
+        },
+        "dialog": {
+            "templateName": "用户导入模板.xls",
+            "columns": [{
+                    "label": "电话",
+                    "prop": "account",
+                    "minWidth": "70",
+                    "proped": "row0"
+                },
+                {
+                    "label": "名称",
+                    "prop": "userName",
+                    "minWidth": "70",
+                    "proped": "row1"
+                },
+                {
+                    "label": "性别",
+                    "prop": "gender",
+                    "minWidth": "40",
+                    "proped": "row2",
+                    "variable": "enum",
+                    "enum": {
+                        "男": 1,
+                        "女": 2,
+                        "保密": 0
+                    }
+                },
+                {
+                    "label": "类型",
+                    "prop": "leveles",
+                    "minWidth": "50",
+                    "proped": "row3",
+                    "variable": "enum",
+                    "enum": {
+                        "管理员": 3,
+                        "VIP": 2,
+                        "普通": 1
+                    }
+                },
+                {
+                    "label": "邮箱",
+                    "prop": "email",
+                    "minWidth": "70",
+                    "proped": "row4"
+                }
+            ],
+            "title": "导入用户"
+        }
+    },
+    "appa": {
+        "info": {
+            "add": "新增",
+            "edit": "编辑",
+            "delete": "删除",
+            "enum": ["预定中", "使用中", "闲置"]
+        },
+        "datagrid": {
+            "selection": {
+                "showSelection": true
+            },
+            "pagination": {
+                "showPagination": true,
+                "showMore": true
+            },
+            "columns": [{
+                    "label": "编号",
+                    "prop": "code",
+                    "minWidth": 70
+                },
+                {
+                    "label": "名称",
+                    "prop": "positon",
+                    "minWidth": 150
+                },
+                {
+                    "label": "费用(单位:元/小时)",
+                    "prop": "price",
+                    "width": 150
+                },
+                {
+                    "label": "备注",
+                    "prop": "descripter",
+                    "minWidth": 150
+                }, {
+                    "label": "状态",
+                    "prop": "entry",
+                    "width": 150
+                },
+                {
+                    "label": "创建时间",
+                    "prop": "createTime",
+                    "width": 160
+                }
+            ]
+        },
+        "dialog": {
+            "templateName": "器材导入模板.xls",
+            "columns": [{
+                    "label": "编号",
+                    "prop": "code",
+                    "minWidth": "50",
+                    "proped": "row0"
+                },
+                {
+                    "label": "名称",
+                    "prop": "positon",
+                    "minWidth": "70",
+                    "proped": "row1"
+                },
+                {
+                    "label": "费用(单位:元/小时)",
+                    "prop": "price",
+                    "minWidth": "70",
+                    "proped": "row2",
+                    "variable": "int"
+                },
+                {
+                    "label": "备注",
+                    "prop": "descripter",
+                    "minWidth": "50",
+                    "proped": "row3"
+                }
+            ],
+            "title": "导入器材"
+        }
+    },
+    "court": {
+        "info": {
+            "add": "新增",
+            "edit": "编辑",
+            "delete": "删除",
+            "back": "结算",
+            "unsubscribe": "取消",
+            "lend": "出借",
+            "detail": "详情",
+            "enum": ["预定中", "使用中", "闲置"]
+        },
+        "datagrid": {
+            "selection": {
+                "showSelection": true
+            },
+            "pagination": {
+                "showPagination": true,
+                "showMore": true
+            },
+            "columns": [{
+                    "label": "编号",
+                    "prop": "code",
+                    "minWidth": 70
+                },
+                {
+                    "label": "地点",
+                    "prop": "positon",
+                    "minWidth": 150
+                },
+                {
+                    "label": "费用(单位:元/小时)",
+                    "prop": "price",
+                    "width": 150
+                },
+                {
+                    "label": "备注",
+                    "prop": "descripter",
+                    "minWidth": 150
+                }, {
+                    "label": "状态",
+                    "prop": "entry",
+                    "width": 150
+                },
+                {
+                    "label": "创建时间",
+                    "prop": "createTime",
+                    "width": 160
+                }
+            ]
+        },
+        "dialog": {
+            "templateName": "场地导入模板.xls",
+            "columns": [{
+                    "label": "编号",
+                    "prop": "code",
+                    "minWidth": "50",
+                    "proped": "row0"
+                },
+                {
+                    "label": "地点",
+                    "prop": "positon",
+                    "minWidth": "70",
+                    "proped": "row1"
+                },
+                {
+                    "label": "费用(单位:元/小时)",
+                    "prop": "price",
+                    "minWidth": "70",
+                    "proped": "row2",
+                    "variable": "int"
+                },
+                {
+                    "label": "备注",
+                    "prop": "descripter",
+                    "minWidth": "50",
+                    "proped": "row3"
+                }
+            ],
+            "title": "导入场地"
+        }
+    },
+    "discuss": {
+        "info": {
+            "delete": "删除",
+            "top": "置顶",
+            "untop": "取消置顶"
+        },
+        "datagrid": {
+            "selection": {
+                "showSelection": true
+            },
+            "pagination": {
+                "showPagination": true,
+                "showMore": true
+            },
+            "columns": [{
+                    "label": "留言内容",
+                    "prop": "descripter",
+                    "minWidth": 200
+                },
+                {
+                    "label": "匿名者",
+                    "prop": "nickname",
+                    "width": 120
+                },
+                {
+                    "label": "发布者",
+                    "prop": "updateUserName",
+                    "width": 120
+                }, {
+                    "label": "更改时间",
+                    "prop": "updateTime",
+                    "width": 160
+                }, {
+                    "label": "创建时间",
+                    "prop": "createTime",
+                    "width": 160
+                }
+            ]
+        }
+    },
+    "notice": {
+        "info": {
+            "add": "发布公告",
+            "edit": "编辑",
+            "push": "发布",
+            "unpush": "下线",
+            "delete": "删除",
+            "enum": ["草稿", "发布中", "下线"]
+        },
+        "datagrid": {
+            "selection": {
+                "showSelection": true
+            },
+            "pagination": {
+                "showPagination": true,
+                "showMore": true
+            },
+            "columns": [{
+                    "label": "公告内容",
+                    "prop": "descripter",
+                    "minWidth": 200
+                }, {
+                    "label": "状态",
+                    "prop": "mode",
+                    "width": 80
+                },
+                {
+                    "label": "发布者",
+                    "prop": "updateUserName",
+                    "width": 120
+                }, {
+                    "label": "更改时间",
+                    "prop": "updateTime",
+                    "width": 160
+                }, {
+                    "label": "创建时间",
+                    "prop": "createTime",
+                    "width": 160
+                }
+            ]
+        }
+    },
+    "order": {
+        "info": {
+            "page": ["返回", "订单详情", "我的预约"],
+            "title": ["已选套餐", "待选器材"],
+            "price": "费用",
+            "cancle": "取消",
+            "remove": "移除",
+            "empty": "所选器材已被使用",
+            "select": "选用",
+            "btn": ["出借", "预约"],
+            "success": ["成功预约", "成功下单"],
+            "flag": {
+                "label": "账号类型",
+                "items": ["老客户", "潜在客户"]
+            },
+            "descripter": ["备注", "请输入备注"],
+            "subscribe": "旨在预约有效",
+            "time": "只能预约未来1小时后的时间",
+            "startTime": ["预约时间", "请选择开始预约日期时间"],
+            "contact": ["联系方式", "请输入联系方式"],
+            "useInfo": ["租借客户", "请输入客户名称"]
+        },
+        "formRules": {
+            "startTime": [{
+                "required": true,
+                "message": "请选择时间",
+                "trigger": "blur"
+            }],
+            "contact": [{
+                "required": true,
+                "message": "请选择客户或者填写客户联系方式",
+                "trigger": "blur"
+            }],
+            "useInfo": [{
+                    "required": true,
+                    "message": "请输入客户名称",
+                    "trigger": "blur"
+                },
+                {
+                    "min": 1,
+                    "max": 30,
+                    "message": "长度为 1 到 30 个字符",
+                    "trigger": "blur"
+                }
+            ]
+        },
+        "datagrid": {
+            "selection": {
+                "showSelection": true
+            },
+            "pagination": {
+                "showPagination": true,
+                "showMore": false
+            },
+            "rowKey": "code",
+            "emptyText": "暂无闲置器材",
+            "columns": [{
+                    "label": "编号",
+                    "prop": "code",
+                    "minWidth": 70
+                }, {
+                    "label": "名称",
+                    "prop": "positon",
+                    "minWidth": 150
+                },
+                {
+                    "label": "费用(单位:元/小时)",
+                    "prop": "price",
+                    "width": 150
+                },
+                {
+                    "label": "备注",
+                    "prop": "descripter",
+                    "minWidth": 150
+                }
+            ]
+        }
+    },
+    "home": {
+        "info": {
+            "loading": "努力加载中...",
+            "nomore": "没有更多了",
+            "tabs": "闲置场地",
+            "btn": "预定",
+            "notice": "公告",
+            "empty": "欢迎光临",
+            "discuss": "留言板"
+        },
+        "datagrid": {
+            "selection": {
+                "showSelection": false
+            },
+            "pagination": {
+                "showPagination": true,
+                "showMore": false
+            },
+            "emptyText": "暂无闲置球场",
+            "columns": [{
+                    "label": "编号",
+                    "prop": "code",
+                    "minWidth": 70
+                }, {
+                    "label": "地点",
+                    "prop": "positon",
+                    "minWidth": 150
+                },
+                {
+                    "label": "费用(单位:元/小时)",
+                    "prop": "price",
+                    "width": 150
+                },
+                {
+                    "label": "备注",
+                    "prop": "descripter",
+                    "minWidth": 150
+                }
+            ]
+        }
+    },
+    "loginlog": {
+        "info": {
+            "clear": "下线",
+            "delete": "删除",
+            "enum": [
+                ["访客", "普通用户", "VIP用户", "管理员"],
+                ["保密", "男", "女", "第三"],
+                ["在线", "自动退出", "手动退出"]
+            ]
+        },
+        "datagrid": {
+            "selection": {
+                "showSelection": true
+            },
+            "pagination": {
+                "showPagination": true,
+                "showMore": true
+            },
+            "columns": [{
+                    "label": "登录账号",
+                    "prop": "account",
+                    "minWidth": 150
+                },
+                {
+                    "label": "名称",
+                    "prop": "userName",
+                    "minWidth": 150
+                },
+                {
+                    "label": "状态",
+                    "prop": "quiter",
+                    "width": 70
+                },
+                {
+                    "label": "性别",
+                    "prop": "gender",
+                    "width": 70
+                },
+                {
+                    "label": "用户类型",
+                    "prop": "leveles",
+                    "width": 70
+                },
+                {
+                    "label": "邮箱",
+                    "prop": "email",
+                    "minWidth": 200
+                },
+                {
+                    "label": "登录时间",
+                    "prop": "startTime",
+                    "width": 160
+                },
+                {
+                    "label": "退出时间",
+                    "prop": "finishTime",
+                    "width": 150
+                }
+            ]
+        }
+    },
+    "orders": {
+        "info": {
+            "detail": "详情",
+            "back": "结算",
+            "unsubscribe": "取消",
+            "enum": ["预约中", "进行中"]
+        },
+        "datagrid": {
+            "selection": {
+                "showSelection": true
+            },
+            "pagination": {
+                "showPagination": true,
+                "showMore": true
+            },
+            "columns": [{
+                    "label": "订单号",
+                    "prop": "uuid",
+                    "width": 80
+                },
+                {
+                    "label": "出借场地",
+                    "prop": "positon",
+                    "minWidth": 150
+                },
+                {
+                    "label": "费用",
+                    "prop": "price",
+                    "width": 60
+                },
+                {
+                    "label": "时长",
+                    "prop": "hours",
+                    "width": 60
+                },
+                {
+                    "label": "订单类型",
+                    "prop": "entry",
+                    "width": 70
+                },
+                {
+                    "label": "使用者",
+                    "prop": "useInfo",
+                    "width": 100
+                },
+                {
+                    "label": "联系方式",
+                    "prop": "contact",
+                    "minWidth": 120
+                },
+                {
+                    "label": "开始时间",
+                    "prop": "startTime",
+                    "width": 140
+                },
+                {
+                    "label": "经手人",
+                    "prop": "updateUserName",
+                    "width": 130
+                },
+                {
+                    "label": "备注",
+                    "prop": "descripter",
+                    "width": 150
+                }
+            ]
+        }
+    },
+    "orderhis": {
+        "info": {
+            "detail": "详情",
+            "delete": "删除",
+            "enum": [
+                ["预约", "出借"],
+                ["成功", "失败"]
+            ]
+        },
+        "datagrid": {
+            "selection": {
+                "showSelection": true
+            },
+            "pagination": {
+                "showPagination": true,
+                "showMore": true
+            },
+            "expand": true,
+            "columns": [{
+                    "label": "订单号",
+                    "prop": "uuid",
+                    "width": 80
+                },
+                {
+                    "label": "出借场地",
+                    "prop": "positon",
+                    "minWidth": 150
+                },
+                {
+                    "label": "费用",
+                    "prop": "price",
+                    "width": 60
+                },
+                {
+                    "label": "时长",
+                    "prop": "hours",
+                    "width": 60
+                },
+                {
+                    "label": "订单类型",
+                    "prop": "entry",
+                    "width": 70
+                },
+                {
+                    "label": "使用者",
+                    "prop": "useInfo",
+                    "width": 100
+                },
+                {
+                    "label": "联系方式",
+                    "prop": "contact",
+                    "minWidth": 120
+                },
+                {
+                    "label": "开始时间",
+                    "prop": "startTime",
+                    "width": 140
+                }, {
+                    "label": "结算时间",
+                    "prop": "finishTime",
+                    "width": 140
+                },
+                {
+                    "label": "经手人",
+                    "prop": "updateUserName",
+                    "width": 130
+                },
+                {
+                    "label": "备注",
+                    "prop": "descripter",
+                    "width": 150
+                },
+                {
+                    "label": "更新时间",
+                    "prop": "updateTime",
+                    "width": 140
+                },
+                {
+                    "label": "创建时间",
+                    "prop": "createTime",
+                    "width": 140
+                }
+            ]
+        }
+    },
+    "detail": [
+        [{
+                "label": "订单号",
+                "prop": "uuid"
+            }, {
+                "label": "编号",
+                "prop": "code"
+            }, {
+                "label": "场所/器材",
+                "prop": "positon"
+            }, {
+                "label": "使用者",
+                "prop": "useInfo"
+            },
+            {
+                "label": "联系方式",
+                "prop": "contact"
+            },
+            {
+                "label": "使用时长",
+                "prop": "hours"
+            }
+        ],
+        [{
+            "label": "交易金额",
+            "prop": "allPrice"
+        }],
+        [{
+            "label": "交易金额",
+            "prop": "price"
+        }, {
+            "label": "交易结果",
+            "prop": "result"
+        }],
+        [{
+                "label": "经手人",
+                "prop": "updateUserName"
+            },{
+                "label": "备注",
+                "prop": "descripter"
+            },
+            {
+                "label": "创建时间",
+                "prop": "createTime"
+            },
+            {
+                "label": "开始时间",
+                "prop": "startTime"
+            }
+        ],
+        [{
+            "label": "结束时间",
+            "prop": "finishTime"
+        }]
+    ]
+}

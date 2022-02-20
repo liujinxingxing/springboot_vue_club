@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.club.core.mapper.ContentMapper">
+
+    <select id="list" resultType="com.club.core.vo.ContentVo">
+        SELECT t.*,t2.UUID,t2.ENTRY,t2.USE_INFO,t2.CONTACT,t2.START_TIME FROM CLUB_CONTENT t
+        LEFT JOIN CLUB_ORDER t2 ON t2.CODE = t.CODE AND t2.MODE = t.MODE
+        WHERE t.MODE = #{mode}
+        <if test="keyword != null and keyword != ''">
+            AND t.POSITON LIKE #{keyword}
+        </if>
+        <if test="flag">
+            AND t2.UUID IS NULL
+        </if>
+        <if test="codes != null and codes.size() >0 ">
+            <foreach collection="codes" item="code" open="AND t.CODE IN(" separator="," close=")">
+                #{code}
+            </foreach>
+        </if>
+        ORDER BY t.UPDATE_TIME DESC
+    </select>
+
+</mapper>

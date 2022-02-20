@@ -1,0 +1,14 @@
+{
+  "docs": [{
+    "text": "本地文档",
+    "options": [{
+      "text": "APIs文档",
+      "addr": "/club/static/club.json"
+    }
+    ]
+  }],
+  "mode": "single",
+  "api": "proxy/apifaces/api-docs",
+  "title": "apiface",
+  "proxy": ""
+}

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.club.core.mapper.UserMapper">
+
+    <select id="list" resultType="com.club.core.model.AuthUser">
+        SELECT
+            t.ACCOUNT,
+            t.USER_NAME,
+            t.DESCRIPTER,
+            t.GENDER,
+            t.EMAIL,
+            t.AVATAR,
+            t.LEVELES,
+            t.CREATE_TIME,
+            t.UPDATE_USER_ID,
+            t.UPDATE_USER_NAME,
+            t.UPDATE_TIME
+        FROM CLUB_USER t
+        WHERE 1 = 1
+        <if test="keyword != null and keyword != ''">
+            AND (t.USER_NAME LIKE #{keyword} OR t.ACCOUNT LIKE #{keyword})
+        </if>
+        <if test="userIds != null and userIds.size() >0 ">
+            <foreach collection="userIds" item="userId" open="AND t.ACCOUNT IN(" separator="," close=")">
+                #{userId}
+            </foreach>
+        </if>
+        ORDER BY t.UPDATE_TIME DESC
+    </select>
+
+    <select id="listLog" resultType="com.club.core.model.LoginLog">
+        SELECT t.*,
+        t2.EMAIL,t2.GENDER,t2.LEVELES,t2.USER_NAME FROM CLUB_USER_LOGIN_LOG t
+        LEFT JOIN  CLUB_USER t2 ON t2.ACCOUNT = t.ACCOUNT
+        WHERE 1 = 1
+        <choose>
+            <when test="admin">
+                <if test="keyword != null and keyword != ''">
+                    AND (t2.USER_NAME LIKE #{keyword} OR t2.ACCOUNT LIKE #{keyword})
+                </if>
+            </when>
+            <otherwise>AND t.ACCOUNT = #{account}</otherwise>
+        </choose>
+        ORDER BY t.START_TIME DESC
+    </select>
+
+    <update id="init">
+        UPDATE CLUB_USER SET PASSWORD = #{password}
+        WHERE
+        <choose>
+            <when test="userIds != null and userIds.size() >0 ">
+                <foreach collection="userIds" item="userId" open="ACCOUNT IN(" separator="," close=")">
+                    #{userId}
+                </foreach>
+            </when>
+            <otherwise>1 = -1</otherwise>
+        </choose>
+    </update>
+
+</mapper>

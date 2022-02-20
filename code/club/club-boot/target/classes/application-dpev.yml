@@ -1,0 +1,24 @@
+config:
+  port: 38080
+  context-path: /club
+base:
+  db:
+    versionTableName: DB_VERSIONAL
+    directory: db
+    files: create.sql,data.sql
+    execute: true
+    monitor: true
+    dialect: mysql
+    validationQuery: select 'x' from dual
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/club?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&useSSL=false&serverTimezone=UTC
+    username: root
+    password: admin!23
+  session:
+    timeout: 20
+    name: WEBSESSION
+  subscribe:
+    timeout: 1
+  upload:
+    folder:
+    path:

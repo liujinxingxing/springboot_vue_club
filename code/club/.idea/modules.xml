@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/club.iml" filepath="$PROJECT_DIR$/club.iml" />
+      <module fileurl="file://$PROJECT_DIR$/club-auth/club-auth.iml" filepath="$PROJECT_DIR$/club-auth/club-auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/club-base/club-base.iml" filepath="$PROJECT_DIR$/club-base/club-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/club-boot/club-boot.iml" filepath="$PROJECT_DIR$/club-boot/club-boot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/club-core/club-core.iml" filepath="$PROJECT_DIR$/club-core/club-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/club-framework/club-framework.iml" filepath="$PROJECT_DIR$/club-framework/club-framework.iml" />
+    </modules>
+  </component>
+</project>

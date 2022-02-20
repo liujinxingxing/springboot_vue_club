@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.club.core.mapper.OrderMapper">
+
+    <select id="list" resultType="com.club.core.vo.OrderResult">
+        SELECT t.*,t2.PRICE,t2.POSITON
+        FROM CLUB_ORDER t
+        LEFT JOIN CLUB_CONTENT t2 ON t2.CODE = t.CODE AND t2.MODE = t.MODE
+        WHERE t2.PRICE IS NOT NULL
+        <if test="entry != null">
+            AND t.ENTRY = #{entry}
+        </if>
+        <choose>
+            <when test="admin">
+                <choose>
+                    <when test="uuid != null and uuid != ''">
+                        AND t.UUID = #{uuid}
+                    </when>
+                    <when test="contact != null and contact != ''">
+                        AND t.CONTACT = #{contact}
+                    </when>
+                    <otherwise>AND t.CONTACT = #{account}</otherwise>
+                </choose>
+            </when>
+            <otherwise>AND t.CONTACT = #{account}</otherwise>
+        </choose>
+        ORDER BY t.UUID, t.MODE DESC, t.ENTRY DESC
+    </select>
+
+<!--    <select id="getUse" resultType="String">-->
+<!--        SELECT t.CODE FROM CLUB_ORDER t-->
+<!--        WHERE t.MODE = 0-->
+<!--        <choose>-->
+<!--            <when test="uuid != null and uuid != ''">-->
+<!--                AND t.CODE = #{uuid}-->
+<!--                <foreach collection="codes" item="code" open="AND t.CODE IN(" separator="," close=")">-->
+<!--                    #{code}-->
+<!--                </foreach>-->
+<!--            </when>-->
+<!--            <otherwise>AND 1 = -1</otherwise>-->
+<!--        </choose>-->
+<!--    </select>-->
+
+    <select id="listHis" resultType="com.club.core.model.OrderHistory">
+        SELECT t.*,t2.PRICE,t2.POSITON
+        FROM CLUB_ORDER_HIS t
+        LEFT JOIN CLUB_CONTENT t2 ON t2.CODE = t.CODE AND t2.MODE = t.MODE
+        WHERE t2.PRICE IS NOT NULL
+        <choose>
+            <when test="admin">
+                <choose>
+                    <when test="uuid != null and uuid != ''">
+                        AND t.UUID = #{uuid}
+                    </when>
+                    <when test="contact != null and contact != ''">
+                        AND t.CONTACT = #{contact}
+                    </when>
+                    <otherwise>AND t.CONTACT = #{account}</otherwise>
+                </choose>
+            </when>
+            <otherwise>AND t.CONTACT = #{account}</otherwise>
+        </choose>
+        ORDER BY t.UUID, t.MODE DESC, t.ENTRY DESC
+    </select>
+
+    <select id="listSingle" resultType="com.club.core.vo.OrderResult">
+        SELECT
+            t2.*,
+            t3.POSITON,
+            t.PRICE
+        FROM(
+            SELECT
+                tt.UUID,
+                tt.ENTRY,
+                SUM(tt2.PRICE) PRICE
+            FROM CLUB_ORDER tt
+            LEFT JOIN CLUB_CONTENT tt2  ON tt2.CODE = tt.CODE AND tt2.MODE = tt.MODE
+            GROUP BY tt.UUID,tt.ENTRY
+        ) t
+        LEFT JOIN CLUB_ORDER t2 ON t2.UUID = t.UUID AND t2.MODE = 1
+        LEFT JOIN CLUB_CONTENT t3 ON t3.CODE = t2.CODE AND t3.MODE = t2.MODE
+        WHERE t3.PRICE IS NOT NULL
+        <if test="keyword != null and keyword != ''">
+            AND (t3.POSITON LIKE #{keyword} OR t2.DESCRIPTER LIKE #{keyword})
+        </if>
+        ORDER BY t2.START_TIME DESC
+    </select>
+
+    <select id="listHisSingle" resultType="com.club.core.model.OrderHistory">
+        SELECT
+            t2.UUID,
+            t2.CODE,
+            t2.MODE,
+            t2.ENTRY,
+            t2.RESULT,
+            t2.HOURS,
+            t2.DESCRIPTER,
+            t2.CONTACT,
+            t2.USE_INFO,
+            t2.START_TIME,
+            t2.FINISH_TIME,
+            t2.CREATE_TIME,
+            t2.UPDATE_USER_ID,
+            t2.UPDATE_USER_NAME,
+            t2.UPDATE_TIME,
+            t.PRICE,
+            t3.POSITON
+        FROM(
+            SELECT
+            tt.UUID,
+            tt.ENTRY,
+            SUM(tt.PRICE) PRICE
+            FROM CLUB_ORDER_HIS tt
+            GROUP BY tt.UUID,tt.ENTRY
+        ) t
+        LEFT JOIN CLUB_ORDER_HIS t2 ON t2.UUID = t.UUID AND t2.MODE = 1
+        LEFT JOIN CLUB_CONTENT t3 ON t3.CODE = t2.CODE AND t3.MODE = t2.MODE
+        WHERE t3.PRICE IS NOT NULL
+        <if test="keyword != null and keyword != ''">
+            AND (t3.POSITON LIKE #{keyword} OR t2.DESCRIPTER LIKE #{keyword})
+        </if>
+        ORDER BY t2.FINISH_TIME DESC
+    </select>
+
+    <select id="getSubscribe" resultType="com.club.core.model.Order">
+        SELECT
+            t.UUID,
+            t.ENTRY,
+            t.START_TIME
+        FROM CLUB_ORDER t
+        WHERE t.MODE = 1 AND t.ENTRY = 0
+    </select>
+
+    <delete id="deleteHis">
+        DELETE FROM CLUB_ORDER_HIS
+        WHERE
+        <choose>
+            <when test="uuids != null and uuids.size() >0 ">
+                <foreach collection="uuids" item="uuid" open="UUID IN(" separator="," close=")">
+                    #{uuid}
+                </foreach>
+            </when>
+            <otherwise>1 = -1</otherwise>
+        </choose>
+    </delete>
+<!--    <update id="active">-->
+<!--        UPDATE-->
+<!--        CLUB_ORDER-->
+<!--        SET-->
+<!--        ENTRY = 1 ,-->
+<!--        START_TIME = #{now},-->
+<!--        UPDATE_USER_ID = #{account},-->
+<!--        UPDATE_USER_NAME = #{userName},-->
+<!--        UPDATE_TIME= #{now}-->
+<!--        WHERE-->
+<!--        <choose>-->
+<!--            <when test="uuid != null and uuid != ''">-->
+<!--                UUID = #{uuid}-->
+<!--            </when>-->
+<!--            <otherwise>1 = -1</otherwise>-->
+<!--        </choose>-->
+<!--        AND ENTRY = 0-->
+<!--    </update>-->
+
+</mapper>

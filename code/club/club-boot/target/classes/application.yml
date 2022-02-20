@@ -1,0 +1,57 @@
+server:
+  port: ${config.port}
+  servlet:
+    context-path: ${config.context-path}
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  profiles:
+    active: dpev
+  mvc:
+    dateFormat: yyyy-MM-dd HH:mm:ss
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+  jackson:
+    default-property-inclusion: ALWAYS
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  datasource:
+    url: ${base.db.url}
+    username: ${base.db.username}
+    password: ${base.db.password}
+    driver-class-name: ${base.db.driverClassName}
+    platform: ${base.db.dialect}
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initialSize: 5
+      minIdle: 5
+      maxActive: 10
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: ${base.db.validationQuery}
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      removeAbandoned: true
+      remove-abandoned-timeout: 180
+      web-stat-filter:
+        enabled: ${base.db.monitor}
+        url-pattern: /*
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+      stat-view-servlet:
+        enabled: ${base.db.monitor}
+        url-pattern: /druid/*
+        reset-enable: true
+        login-username: ${base.db.username}
+        login-password: ${base.db.password}

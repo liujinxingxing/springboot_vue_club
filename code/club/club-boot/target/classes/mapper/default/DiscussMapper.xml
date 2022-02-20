@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.club.core.mapper.DiscussMapper">
+
+
+    <select id="list" resultType="com.club.core.model.Discuss">
+        SELECT t.* FROM CLUB_DISCUSS t
+        WHERE 1 = 1
+        <if test="keyword != null and keyword != ''">
+            AND t.DESCRIPTER LIKE #{keyword}
+        </if>
+        ORDER BY t.MODE DESC,t.UPDATE_TIME DESC
+    </select>
+
+</mapper>

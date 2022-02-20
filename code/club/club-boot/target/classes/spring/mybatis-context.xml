@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://www.springframework.org/schema/c" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 配置MyBatis -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!--dataSource属性指定要用到的连接池 -->
+		<property name="dataSource" ref="dataSource" />
+		<!--configLocation属性指定mybatis的核心配置文件 -->
+		<property name="configuration">
+			<bean class="org.apache.ibatis.session.Configuration">
+				<property name="mapUnderscoreToCamelCase" value="true" />
+				<property name="jdbcTypeForNull" value="VARCHAR" />
+				<property name="callSettersOnNulls" value="true" />
+			</bean>
+		</property>
+		
+		<property name="plugins">
+			<array value-type="org.apache.ibatis.plugin.Interceptor">
+				<bean class="com.club.framework.mybatis.mybatis.interceptor.CameHumpInterceptor"></bean>
+				<bean class="com.github.pagehelper.PageInterceptor">
+					<property name="properties">
+						<props>
+							<prop key="offsetAsPageNum">true</prop>
+							<prop key="rowBoundsWithCount">true</prop>
+							<prop key="pageSizeZero">true</prop>
+						</props>
+					</property>
+				</bean>
+			</array>
+		</property>
+		<property name="mapperLocations">
+			<array>
+				<value>classpath*:mapper/**/default/**/*.xml</value>
+				<value>classpath*:mapper/**/mysql/**/*.xml</value>
+			</array>
+		</property>
+	</bean>
+</beans>

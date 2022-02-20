@@ -1,0 +1,25 @@
+{
+  "0": [
+    "path:club:static:*",
+    "path:club:auth:*"
+  ],
+  "1": [
+    "func:club:btn:club:user:unsubscribe",
+    "path:club:order:unsubscribe",
+    "path:club:io:download,upload",
+    "path:club:user:modify",
+    "path:club:user:passwd",
+    "path:club:opt:discuss:*",
+    "path:club:opt:notice:list",
+    "path:club:court:false:list",
+    "path:club:order:his:list",
+    "path:club:order:list"
+  ],
+  "2": [
+    "func:club:btn:club:welcome:order",
+    "path:club:appa:false:list",
+    "path:club:order:subscribe",
+    "path:club:order:court,appa,clear:prefix"
+  ]
+}
+
